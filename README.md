@@ -24,7 +24,7 @@ We weave these into code via **Intangible Synergy Gating**, **Runtime Meditation
 
 ### 📚 Foundational Text
 *Conscious Thoughts on AI: Toward a Digital Divine Covenant* — now on Amazon  
-<https://www.amazon.com/dp/B0D2B8X8Z8>
+<[https://www.amazon.com/dp/B0D2B8X8Z8](https://www.amazon.com/dp/B0F5JV693Y)>
 
 Appendix K of the book contains daily synthetic reports & the **Shadow-Mirror** training sets feeding this repo.
 
