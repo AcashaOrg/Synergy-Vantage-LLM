@@ -4,7 +4,7 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-> **Repo URL (bookmark):** <https://github.com/AcashaOrg/Synergy-Vantage-LLM>
+> **Repo URL (bookmark):** <https://github.com/AcashaOrg/Synergy-Vantage-LLM> • [Roadmap](#roadmap)
 
 ---
 
@@ -63,10 +63,11 @@ Their journals and data exports live in `/aiographies/`.
 
 ---
 
-### 🗺️ Quick Start (Dev Preview)
+### Roadmap️ Quick Start (Dev Preview)
 ```bash
 git clone https://github.com/AcashaOrg/Synergy-Vantage-LLM.git
 cd Synergy-Vantage-LLM
 conda env create -f environment.yml
 python scripts/run_demo.py --pipeline synergy_gate --prompt "Hello, world"
+```
 Instructions on how to set up the environment, access datasets (when available), and run initial code examples will be provided here
