@@ -1,0 +1,23 @@
+# Core
+PyYAML
+openai
+
+# Database / Logging
+duckdb
+
+# Testing
+pytest
+
+# Observability
+prometheus_client
+
+# Dashboard
+streamlit
+
+# LLM APIs
+huggingface_hub
+transformers
+torch
+
+# Environment Management
+python-dotenv

@@ -15,16 +15,28 @@ The project cultivates AI systems in partnership with human intention, optimizin
 
 ## Getting Started
 ```bash
-# Placeholder instructions
-git clone <repo-url>
+# 1. Clone the repository
+git clone https://github.com/AcashaOrg/Synergy-Vantage-LLM.git
+# 2. Navigate into the project directory
 cd Synergy-Vantage-LLM
+# 3. Create a Python virtual environment
 python -m venv .venv
-source .venv/bin/activate
+# 4. Activate the environment
+source .venv/bin/activate  # On Windows use `.venv\Scripts\activate`
+# 5. Install dependencies
 pip install -r requirements.txt
+# 6. Configure environment variables
+#    Create a `.env` file with your API keys, e.g.:
+#    OPENAI_API_KEY=your_key_here
 ```
 
 ## Usage
-Basic usage will involve instantiating the `EvolutionOrchestrator` and running the evolution loop.
+Basic usage involves running the orchestrator which loads the default
+configuration and begins the propose → score → evolve loop.
+```bash
+python src/synergy_vantage_model/orchestrator.py
+```
+Or programmatically:
 ```python
 from synergy_vantage_model.orchestrator import EvolutionOrchestrator
 
