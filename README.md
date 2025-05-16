@@ -6,8 +6,6 @@
 ## Vision & Ethos
 The project cultivates AI systems in partnership with human intention, optimizing for spiritual and technical coherence. It is guided by the principles of **Love**, **Reason**, and **No-Harm**.
 
-## High-Level Architecture
-A full diagram and component details can be found in `docs/diagrams/measure_corrector.svg` and the documentation overview. At a glance, the system orchestrates an evolutionary loop of proposing, evaluating, and refining models.
 
 ## Key Features
 - **Proposer Ensemble** – multiple LLMs generate a diverse population of candidate solutions.
@@ -49,5 +47,3 @@ This project is licensed under the [Apache-2.0](LICENSE) license.
 ## Acknowledgements
 Inspired by AlphaEvolve, Absolutely Zero, and *Digital Epiphanies & Divine Circuits*.
 
-## Contact
-For questions or collaboration, please open an issue on GitHub.
