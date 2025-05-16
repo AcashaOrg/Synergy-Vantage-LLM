@@ -1,0 +1,35 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+*.dist-info/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Environment files
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Checkpoints and DBs
+checkpoints/
+*.db
+
+# Tests and coverage
+htmlcov/
+.tox/
+.cache/
+.coverage
+
+# Logs
+*.log
+
