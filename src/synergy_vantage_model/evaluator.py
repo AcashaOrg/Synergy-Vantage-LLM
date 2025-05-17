@@ -1,3 +1,5 @@
+"""Evaluator Cascade module implementing tiered evaluation steps."""
+
 import openai
 import os
 import subprocess
@@ -5,7 +7,9 @@ import tempfile
 
 
 class EvaluatorCascade:
+    """Run candidate solutions through heuristic, unit-test, LLM, and optional human review tiers."""
     def __init__(self, config):
+        """Initialise the cascade with a config dictionary."""
         self.config = config
         # openai.api_key = os.getenv("OPENAI_API_KEY")
         self.critic_llm_model = self.config.get("llm_critic", "gpt-4o-pro")
@@ -13,6 +17,7 @@ class EvaluatorCascade:
         print(f"EvaluatorCascade initialized with critic: {self.critic_llm_model}")
 
     def _tier1_heuristics(self, candidate_code_or_text):
+        """Basic lint-style checks for quick feedback."""
         print(f"  Tier 1: Running heuristics on: {str(candidate_code_or_text)[:50]}...")
         score = 1.0
         passed = True
@@ -26,6 +31,7 @@ class EvaluatorCascade:
         return {"score_t1": score, "passed_t1": passed, "details_t1": "Heuristics check complete."}
 
     def _tier2_unit_tests(self, candidate_code):
+        """Run project unit tests on the candidate code."""
         print(f"  Tier 2: Running unit tests for code: {str(candidate_code)[:50]}...")
         score = 1.0
         passed = True
@@ -45,6 +51,7 @@ class EvaluatorCascade:
         return {"score_t2": score, "passed_t2": passed, "details_t2": details}
 
     def _tier3_llm_critic(self, candidate_code_or_text):
+        """Call an LLM-based critic to rate the candidate."""
         print(
             f"  Tier 3: LLM Critic ({self.critic_llm_model}) evaluating: {str(candidate_code_or_text)[:50]}..."
         )
@@ -61,12 +68,14 @@ class EvaluatorCascade:
         return {"score_t3": score, "passed_t3": passed, "details_t3": details_t3}
 
     def _tier4_human_review(self, candidate_id, candidate_code_or_text):
+        """Flag a candidate for optional manual inspection."""
         print(
             f"  Tier 4: Flagging candidate {candidate_id} for human review: {str(candidate_code_or_text)[:50]}..."
         )
         return {"requires_human_review": True, "details_t4": "Candidate flagged for human review."}
 
     def evaluate(self, candidate_id, candidate_payload, require_human_review_flag=False):
+        """Run the full evaluation pipeline on a single candidate."""
         print(f"Evaluating candidate ID: {candidate_id}...")
         evaluation_results = {"candidate_id": candidate_id}
         current_payload = candidate_payload

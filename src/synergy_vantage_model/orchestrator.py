@@ -1,10 +1,14 @@
+"""Evolution orchestrator for the propose → score → evolve cycle."""
+
 import yaml
 # from .proposer import ProposerEnsemble  # Placeholder for future import
 # from .evaluator import EvaluatorCascade  # Placeholder for future import
 
 
 class EvolutionOrchestrator:
+    """Load configuration and manage each iteration of the evolution loop."""
     def __init__(self, config_path="configs/default.yaml"):
+        """Read configuration and prepare downstream components."""
         self.config = self._load_config(config_path)
         # self.proposer = ProposerEnsemble(self.config)  # Placeholder
         # self.evaluator = EvaluatorCascade(self.config)  # Placeholder
@@ -15,6 +19,7 @@ class EvolutionOrchestrator:
         )
 
     def _load_config(self, config_path):
+        """Load YAML configuration from disk and return a dictionary."""
         try:
             with open(config_path, "r") as f:
                 config_data = yaml.safe_load(f)
@@ -28,6 +33,7 @@ class EvolutionOrchestrator:
             return {}
 
     def run_evolution_loop(self):
+        """Execute the propose → score → evolve process according to the config."""
         print("Starting Propose -> Score -> Evolve loop...")
         if not self.config:
             print("Cannot run evolution loop without a valid configuration.")
