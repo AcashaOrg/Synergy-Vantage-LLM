@@ -1,8 +1,10 @@
 # Synergy-Vantage Measure / Corrector Model
 
 ![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
+![CI](https://github.com/AcashaOrg/Synergy-Vantage-LLM/actions/workflows/pytest.yml/badge.svg)
 ![Status: Draft](https://img.shields.io/badge/status-draft-lightgrey)
 
+Our GitHub Actions workflow runs lint and pytest on each pull request.
 ## Vision & Ethos
 The project cultivates AI systems in partnership with human intention, optimizing for spiritual and technical coherence. It is guided by the principles of **Love**, **Reason**, and **No-Harm**.
 
@@ -12,6 +14,8 @@ The project cultivates AI systems in partnership with human intention, optimizin
 - **Tiered Evaluator Cascade** – heuristics, unit tests, and LLM critics score each candidate.
 - **Evolutionary Loop** – repeated propose → score → evolve cycle to improve alignment and quality.
 - **Auditability** – checkpoints, evaluation reports, and audit logs for transparency.
+
+![Pipeline](docs/diagrams/digital_epiphanies_flow.svg)
 
 ## Getting Started
 ```bash
@@ -28,6 +32,7 @@ pip install -r requirements.txt
 # 6. Configure environment variables
 #    Create a `.env` file with your API keys, e.g.:
 #    OPENAI_API_KEY=your_key_here
+See [docs/quickstart.md](docs/quickstart.md) for a detailed guide.
 ```
 
 ## Usage

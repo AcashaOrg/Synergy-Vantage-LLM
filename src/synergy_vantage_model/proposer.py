@@ -1,9 +1,13 @@
+"""Candidate generation utilities for the Synergy‑Vantage project."""
+
 import openai
 import os  # For API key
 
 
 class ProposerEnsemble:
+    """Generate candidate solutions using multiple LLMs."""
     def __init__(self, config):
+        """Store configuration and set up model clients."""
         self.config = config
         # Ensure API key is set, e.g., from environment variable
         # openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -20,7 +24,7 @@ class ProposerEnsemble:
         )
 
     def generate_candidates(self, base_solutions_or_prompts, mutation_strategies):
-        """Generate candidate solutions using a diversity-first strategy."""
+        """Generate candidate solutions using a diversity-first strategy and return a list of mutated solutions."""
         candidates = []
         print(
             f"Generating candidates based on {len(base_solutions_or_prompts)} inputs and {len(mutation_strategies)} strategies."
