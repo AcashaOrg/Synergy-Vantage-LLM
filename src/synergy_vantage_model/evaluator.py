@@ -2,6 +2,10 @@ import openai
 import os
 import subprocess
 import tempfile
+import json
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class EvaluatorCascade:
@@ -52,7 +56,23 @@ class EvaluatorCascade:
         passed = True
         details_t3 = "LLM critic (simulated) found it acceptable."
         try:
-            pass
+            prompt = (
+                "You are a strict code reviewer. Assess the following candidate code or text "
+                "and return a JSON object with `score` (0-1) and `justification`."
+            )
+            response = self.client_critic.chat.completions.create(
+                model=self.critic_llm_model,
+                messages=[
+                    {"role": "system", "content": prompt},
+                    {"role": "user", "content": candidate_code_or_text},
+                ],
+                temperature=0,
+            )
+            content = response.choices[0].message.content.strip()
+            parsed = json.loads(content)
+            score = float(parsed.get("score", 0.0))
+            details_t3 = parsed.get("justification", "")
+            passed = score >= 0.5
         except Exception as e:
             print(f"    Tier 3: Error calling LLM critic: {e}")
             score = 0.0

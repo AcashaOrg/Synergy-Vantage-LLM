@@ -1,6 +1,8 @@
 import yaml
 # from .proposer import ProposerEnsemble  # Placeholder for future import
 # from .evaluator import EvaluatorCascade  # Placeholder for future import
+from .program_db import ProgramDB
+from .score_registry import ScoreRegistry
 
 
 class EvolutionOrchestrator:
@@ -8,8 +10,8 @@ class EvolutionOrchestrator:
         self.config = self._load_config(config_path)
         # self.proposer = ProposerEnsemble(self.config)  # Placeholder
         # self.evaluator = EvaluatorCascade(self.config)  # Placeholder
-        # self.program_db = {}  # Placeholder for ProgramDB connection/object
-        # self.score_registry = {}  # Placeholder for ScoreRegistry
+        self.program_db = ProgramDB(self.config.get("program_db_config"))
+        self.score_registry = ScoreRegistry()
         print(
             f"EvolutionOrchestrator initialized with config: {self.config.get('llm_proposer_breadth')}"
         )

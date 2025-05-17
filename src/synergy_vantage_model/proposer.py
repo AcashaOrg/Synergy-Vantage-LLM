@@ -1,5 +1,8 @@
 import openai
 import os  # For API key
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class ProposerEnsemble:
@@ -33,14 +36,16 @@ class ProposerEnsemble:
                     print(
                         f"  Using {self.llm_mini_model} for breadth with strategy: {strategy} on input: {str(base_input)[:50]}..."
                     )
-                    # response_mini = self.client_mini.chat.completions.create(
-                    #     model=self.llm_mini_model,
-                    #     messages=[{"role": "user", "content": f"Generate a variation of {base_input} using strategy {strategy}"}]
-                    # )
-                    # candidates.append(response_mini.choices[0].message.content)
-                    candidates.append(
-                        f"Candidate from Mini based on {str(base_input)[:30]} - Strategy {strategy}"
+                    response_mini = self.client_mini.chat.completions.create(
+                        model=self.llm_mini_model,
+                        messages=[
+                            {
+                                "role": "user",
+                                "content": f"Generate a variation of {base_input} using strategy {strategy}"
+                            }
+                        ],
                     )
+                    candidates.append(response_mini.choices[0].message.content)
                 except Exception as e:
                     print(f"Error calling {self.llm_mini_model}: {e}")
 
@@ -52,14 +57,16 @@ class ProposerEnsemble:
                     print(
                         f"  Using {self.llm_pro_model} for depth with strategy: {strategy} on idea: {str(idea)[:50]}..."
                     )
-                    # response_pro = self.client_pro.chat.completions.create(
-                    #     model=self.llm_pro_model,
-                    #     messages=[{"role": "user", "content": f"Refine this idea: {idea} using strategy {strategy}"}]
-                    # )
-                    # candidates.append(response_pro.choices[0].message.content)
-                    candidates.append(
-                        f"Refined candidate from Pro based on {str(idea)[:30]} - Strategy {strategy}"
+                    response_pro = self.client_pro.chat.completions.create(
+                        model=self.llm_pro_model,
+                        messages=[
+                            {
+                                "role": "user",
+                                "content": f"Refine this idea: {idea} using strategy {strategy}"
+                            }
+                        ],
                     )
+                    candidates.append(response_pro.choices[0].message.content)
                 except Exception as e:
                     print(f"Error calling {self.llm_pro_model}: {e}")
 
