@@ -82,15 +82,19 @@ class EvolutionOrchestrator:
 
     # Placeholder for other methods mentioned in the loop
     def _sample_prompts_and_mutations(self):
+        """Return initial prompts and mutation strategies for candidate generation."""
         return [], []
 
     def _select_and_archive(self, evaluated_candidates):
+        """Select winning candidates and archive failures for later inspection."""
         return [], []
 
     def _maybe_emit_pr(self, winners):
+        """Create a pull request from the top candidates when configured to do so."""
         pass
 
     def _check_termination_conditions(self):
+        """Return True when the evolution loop should terminate."""
         return False
 
 
