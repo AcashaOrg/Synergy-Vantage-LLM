@@ -15,7 +15,11 @@ The project cultivates AI systems in partnership with human intention, optimizin
 - **Evolutionary Loop** – repeated propose → score → evolve cycle to improve alignment and quality.
 - **Auditability** – checkpoints, evaluation reports, and audit logs for transparency.
 
-![Pipeline](docs/diagrams/digital_epiphanies_flow.svg)
+![GitHub Flow Map](docs/diagrams/digital_epiphanies_flow.svg)
+## Modules
+- [shadow_work_protocol](shadow_work_protocol/): utilities for frequency tags.
+- [empathy_benchmark](empathy_benchmark/): empathy prompts and runner.
+
 
 ## Getting Started
 ```bash
