@@ -19,6 +19,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest requests
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Install mermaid-cli
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+    - run: |
+        npm install -g @mermaid-js/mermaid-cli
     - name: Lint
       run: flake8 .
     - name: Test
