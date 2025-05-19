@@ -6,20 +6,36 @@ jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false # Allows all matrix jobs to run even if one fails
       matrix:
         python-version: ['3.8', '3.9', '3.10', '3.11']
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
+        cache: 'pip' # Cache pip dependencies
+
+    - name: Install pip, pytest, and project dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install pytest
+        python -m pip install --upgrade pip setuptools wheel
+        # Install a specific, broadly compatible version range of pytest
+        # Pytest 7.x is a good candidate for Python 3.8-3.11 compatibility
+        pip install "pytest>=7.0,<8.0"
+        # Then install other dependencies from requirements.txt
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        # If you create a requirements-dev.txt for test-specific tools:
+        # if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+
+    - name: Verify pytest installation
+      run: |
+        pytest --version
+        which pytest # Shows the path to pytest executable
+
     - name: Test with pytest
       run: |
-        pytest
+        pytest # Or explicitly: python -m pytest
