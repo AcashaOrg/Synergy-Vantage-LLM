@@ -52,6 +52,7 @@ from synergy_vantage_model.orchestrator import EvolutionOrchestrator
 orchestrator = EvolutionOrchestrator()
 orchestrator.run_evolution_loop()
 ```
+The `EvolutionOrchestrator` can now execute its main loop (`run_evolution_loop`), using mock components for candidate proposal, evaluation, and storage. This provides a basic framework for the intended propose → score → evolve cycle.
 
 ## Roadmap
 - **v0.2 (Jun 2025):** MVP Hello-Evolve prototype, CI, docs complete.
