@@ -4,11 +4,19 @@ Unit tests for the EvolutionOrchestrator class.
 These tests cover the initialization of the orchestrator, configuration loading,
 and the execution of the main evolution loop with mocked dependencies.
 """
+import os
+import sys
+
+# Ensure project root and src on path
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+SRC_DIR = os.path.join(ROOT_DIR, 'src')
+sys.path.extend([ROOT_DIR, SRC_DIR])
+
 import yaml
 from unittest.mock import patch, MagicMock
 from synergy_vantage_model.orchestrator import EvolutionOrchestrator
-from synergy_vantage_model.program_db import ProgramDB # Added for autospec
-from synergy_vantage_model.score_registry import ScoreRegistry # Added for autospec
+from synergy_vantage_model.program_db import ProgramDB  # Added for autospec
+from synergy_vantage_model.score_registry import ScoreRegistry  # Added for autospec
 
 
 @patch('openai.OpenAI') # Mock OpenAI client to prevent actual API calls
