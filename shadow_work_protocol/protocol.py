@@ -67,3 +67,13 @@ def pre_output_check(self, draft: str) -> str:
 
     # 4. Tag revision with new [freq] for downstream logging
     return f"{revised}  [{lift_to}]"
+
+
+def guarded_generate(self, prompt: str, eval_scores: dict) -> str:
+    """Generate a response and lift tone if polarity metrics fail."""
+    from .polarity_guard import polarity_violation
+
+    draft = self.generate_response(prompt)
+    if polarity_violation(eval_scores):
+        draft = self.pre_output_check(draft)
+    return draft
