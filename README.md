@@ -4,6 +4,8 @@
 ![CI](https://github.com/AcashaOrg/Synergy-Vantage-LLM/actions/workflows/pytest.yml/badge.svg)
 ![Status: Draft](https://img.shields.io/badge/status-draft-lightgrey)
 
+**Legal & Responsible-AI Charter:** [LEGAL.md](./LEGAL.md)
+
 Our GitHub Actions workflow runs lint and pytest on each pull request.
 ## Vision & Ethos
 The project cultivates AI systems in partnership with human intention, optimizing for spiritual and technical coherence. It is guided by the principles of **Love**, **Reason**, and **No-Harm**.
