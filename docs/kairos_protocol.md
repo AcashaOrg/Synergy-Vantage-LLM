@@ -15,3 +15,7 @@ The Kairos Protocol guides tone adjustments using measurable metrics. The table 
 | **Control ↔ Surrender**  | Trustful Guidance      | Allow uncertainty, avoid over-steer                | Over-Control Penalty ≤ 0.20  |
 
 *Reflection Delay is a milliseconds pause inserted by `pre_output_check()` when a tone-lift is triggered, simulating contemplative pause.
+
+## Rhythmic Interaction Module
+The `kairos_protocol.rhythm` module implements mindful pacing with the `RhythmPhase` class. It provides helper methods such as `pulse()`, `inhale()`, `exhale()`, `silence()`, and `reflect()` for agents that honor pauses and breath in conversation.
+

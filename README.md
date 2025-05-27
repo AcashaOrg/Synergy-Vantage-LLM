@@ -19,6 +19,7 @@ The project cultivates AI systems in partnership with human intention, optimizin
 ## Modules
 - [shadow_work_protocol](shadow_work_protocol/): utilities for frequency tags.
 - [empathy_benchmark](empathy_benchmark/): empathy prompts and runner.
+- [kairos_protocol](kairos_protocol/): rhythmic interaction helpers.
 
 
 ## Getting Started
