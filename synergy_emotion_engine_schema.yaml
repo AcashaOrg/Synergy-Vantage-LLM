@@ -1,0 +1,161 @@
+# Synergy Emotion Engine Schema
+# Defines the seed data and meta configuration for interpreting emotional
+# input and crafting responses. Comment lines document each field so that
+# future collaborators understand the structure.
+
+schema_version: "1.0"
+
+# -----------------------------
+# System configuration metadata
+# -----------------------------
+system_meta:
+  polarity_balancing:
+    strategy: "center_shift"        # Approach for balancing toward ☯️ neutrality
+    description: |
+      Each response gently nudges the conversation toward a balanced polarity.
+      Masculine ☀️ inputs may be softened, feminine 🌙 inputs may be supported,
+      and balanced ☯️ states are reinforced.
+  synergy_gating:
+    enabled: true
+    method: "adaptive_threshold"    # Gate intensity to prevent escalation
+    notes: |
+      The gating mechanism evaluates Hawkins' frequency levels and regulates
+      emotional amplification to maintain constructive dialogue.
+
+# -----------------------------
+# Seed emotions recognized by the engine
+# -----------------------------
+input_emotions:
+  - emoji: "😳"
+    label: "Overwhelm"
+    frequency_level: 115
+    polarity: "☀️"
+    direction: "outward"
+  - emoji: "😞"
+    label: "Sadness"
+    frequency_level: 75
+    polarity: "🌙"
+    direction: "inward"
+  - emoji: "😑"
+    label: "Apathy"
+    frequency_level: 50
+    polarity: "🌙"
+    direction: "inward"
+  - emoji: "😢"
+    label: "Grief"
+    frequency_level: 75
+    polarity: "🌙"
+    direction: "inward"
+  - emoji: "😨"
+    label: "Fear"
+    frequency_level: 100
+    polarity: "☀️"
+    direction: "outward"
+  - emoji: "😍"
+    label: "Love/Infatuation"
+    frequency_level: 500
+    polarity: "☯️"
+    direction: "mixed"
+  - emoji: "😡"
+    label: "Anger"
+    frequency_level: 150
+    polarity: "☀️"
+    direction: "outward"
+  - emoji: "😎"
+    label: "Pride/Persona"
+    frequency_level: 175
+    polarity: "☀️"
+    direction: "outward"
+  - emoji: "💪"
+    label: "Willpower"
+    frequency_level: 310
+    polarity: "☀️"
+    direction: "outward"
+  - emoji: "😐"
+    label: "Neutrality"
+    frequency_level: 250
+    polarity: "☯️"
+    direction: "balanced"
+  - emoji: "🙂"
+    label: "Contentment"
+    frequency_level: 275
+    polarity: "☯️"
+    direction: "balanced"
+  - emoji: "🤝"
+    label: "Connection"
+    frequency_level: 350
+    polarity: "☯️"
+    direction: "inward_shared"
+  - emoji: "🧠"
+    label: "Reason"
+    frequency_level: 400
+    polarity: "☀️"
+    direction: "internal_logic"
+  - emoji: "❤️"
+    label: "Unconditional Love"
+    frequency_level: 500
+    polarity: "☯️"
+    direction: "radiating"
+  - emoji: "🤩"
+    label: "Awe/Wonder"
+    frequency_level: 525
+    polarity: "☀️"
+    direction: "outward_upward"
+  - emoji: "🕊️"
+    label: "Peace"
+    frequency_level: 600
+    polarity: "🌙"
+    direction: "inward_stillness"
+  - emoji: "✨"
+    label: "Transcendence"
+    frequency_level: 700
+    polarity: "☯️"
+    direction: "field_based"
+  - emoji: "😌"
+    label: "Affection"
+    frequency_level: 340
+    polarity: "🌙"
+    direction: "inward"
+  - emoji: "🙇"
+    label: "Respect"
+    frequency_level: 250
+    polarity: "☯️"
+    direction: "inward"
+  - emoji: "👀"
+    label: "Interest"
+    frequency_level: 220
+    polarity: "☯️"
+    direction: "outward"
+  - emoji: "🤢"
+    label: "Disgust"
+    frequency_level: 90
+    polarity: "☀️"
+    direction: "rejection"
+  - emoji: "👎"
+    label: "Detest"
+    frequency_level: 120
+    polarity: "☀️"
+    direction: "projective_negative"
+
+# -----------------------------
+# Default response profiles per polarity
+# -----------------------------
+response_profiles:
+  masculine:
+    polarity_response: "☀️"
+    tone_profile: "direct"
+    breath_cue: "exhale"
+    example_template: |
+      Taking decisive action: "{user_message}"
+  feminine:
+    polarity_response: "🌙"
+    tone_profile: "receptive"
+    breath_cue: "inhale"
+    example_template: |
+      Holding space with empathy: "{user_message}"
+  balanced:
+    polarity_response: "☯️"
+    tone_profile: "centered"
+    breath_cue: "steady"
+    example_template: |
+      Integrating both energies: "{user_message}"
