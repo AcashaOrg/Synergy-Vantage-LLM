@@ -57,6 +57,18 @@ orchestrator.run_evolution_loop()
 ```
 The `EvolutionOrchestrator` can now execute its main loop (`run_evolution_loop`), using mock components for candidate proposal, evaluation, and storage. This provides a basic framework for the intended propose → score → evolve cycle.
 
+## API Quick Start
+The project includes a lightweight FastAPI service for programmatic access. Once
+deployed, you can generate completions with a simple `curl` request:
+
+```bash
+curl -H "x-api-key: YOUR_KEY" \
+     -d '{"prompt":"Write a kind greeting"}' \
+     -H "Content-Type: application/json" \
+     https://synergy-api-beta.fly.dev/generate
+```
+
+
 ## Roadmap
 - **v0.2 (Jun 2025):** MVP Hello-Evolve prototype, CI, docs complete.
 - **v0.3 (Jul 2025):** Streamlit dashboard, semantic diff viewer.
