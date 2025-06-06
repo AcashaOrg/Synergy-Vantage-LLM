@@ -1,25 +1,10 @@
-# Core
 PyYAML
 openai
-
-# Database / Logging
 duckdb
-
-# Testing
-pytest
-flake8
-
-# Observability
 prometheus_client
-
-# Dashboard
-streamlit
-
-# LLM APIs
-huggingface_hub
-transformers
-torch
-
-# Environment Management
 python-dotenv
 requests
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+pydantic==2.7.2
+huggingface_hub
