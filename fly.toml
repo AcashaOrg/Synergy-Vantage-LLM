@@ -1,0 +1,12 @@
+app = "synergy-api-beta"
+primary_region = "ord"
+
+[build]
+  dockerfile = "api/Dockerfile"
+
+[http_service]
+  internal_port = 8000
+
+[vm]
+  size = "shared-cpu-1x"
+  memory = 256
