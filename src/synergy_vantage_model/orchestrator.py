@@ -7,7 +7,10 @@ loop of the evolutionary system. It coordinates the interactions between
 the ProposerEnsemble, EvaluatorCascade, ProgramDB, and ScoreRegistry.
 """
 
-import yaml
+try:
+    import yaml
+except Exception:  # pragma: no cover - fallback for minimal envs
+    import yaml_stub as yaml
 from .proposer import ProposerEnsemble  # Placeholder for future import
 from .evaluator import EvaluatorCascade  # Placeholder for future import
 from .program_db import ProgramDB

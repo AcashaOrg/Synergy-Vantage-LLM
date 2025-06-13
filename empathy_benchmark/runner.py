@@ -4,7 +4,10 @@ import json
 import logging
 import os
 
-import openai
+try:
+    import openai  # type: ignore
+except Exception:  # pragma: no cover - fallback for minimal envs
+    import openai_stub as openai  # type: ignore
 
 logging.basicConfig(level=logging.INFO)
 
