@@ -6,9 +6,16 @@ new candidate solutions (e.g., code snippets, designs) based on various inputs
 and strategies. It's a key component of the evolutionary loop.
 """
 
-import openai
 import os  # For API key
-from dotenv import load_dotenv
+try:
+    import openai  # type: ignore
+except Exception:  # pragma: no cover - fallback for minimal envs
+    import openai_stub as openai  # type: ignore
+
+try:
+    from dotenv import load_dotenv
+except Exception:  # pragma: no cover - fallback for minimal envs
+    from dotenv_stub import load_dotenv
 
 load_dotenv()
 

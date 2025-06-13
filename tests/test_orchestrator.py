@@ -12,15 +12,19 @@ ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 SRC_DIR = os.path.join(ROOT_DIR, 'src')
 sys.path.extend([ROOT_DIR, SRC_DIR])
 
-import yaml
+try:
+    import yaml  # type: ignore
+except Exception:  # pragma: no cover - fallback for minimal envs
+    import yaml_stub as yaml
 from unittest.mock import patch, MagicMock
 from synergy_vantage_model.orchestrator import EvolutionOrchestrator
 from synergy_vantage_model.program_db import ProgramDB  # Added for autospec
 from synergy_vantage_model.score_registry import ScoreRegistry  # Added for autospec
 
 
-@patch('openai.OpenAI') # Mock OpenAI client to prevent actual API calls
-def test_orchestrator_init_and_config_load(mock_OpenAI, tmp_path):
+@patch('synergy_vantage_model.proposer.openai.OpenAI')
+@patch('synergy_vantage_model.evaluator.openai.OpenAI')
+def test_orchestrator_init_and_config_load(mock_OpenAI_evaluator, mock_OpenAI, tmp_path):
     """
     Test that the EvolutionOrchestrator initializes correctly and loads
     its configuration from a YAML file.
@@ -35,10 +39,11 @@ def test_orchestrator_init_and_config_load(mock_OpenAI, tmp_path):
     assert orchestrator.config["llm_proposer_breadth"] == "test_mini_model"
 
 
-@patch('openai.OpenAI') # Mock OpenAI client globally for this test
-@patch('synergy_vantage_model.orchestrator.EvaluatorCascade') # Mock the EvaluatorCascade dependency
-@patch('synergy_vantage_model.orchestrator.ProposerEnsemble')  # Mock the ProposerEnsemble dependency
-def test_run_evolution_loop_mocked(mock_ProposerEnsemble, mock_EvaluatorCascade, mock_OpenAI_global, tmp_path):
+@patch('synergy_vantage_model.proposer.openai.OpenAI')
+@patch('synergy_vantage_model.evaluator.openai.OpenAI')
+@patch('synergy_vantage_model.orchestrator.EvaluatorCascade')
+@patch('synergy_vantage_model.orchestrator.ProposerEnsemble')
+def test_run_evolution_loop_mocked(mock_ProposerEnsemble, mock_EvaluatorCascade, mock_OpenAI_evaluator, mock_OpenAI_proposer, tmp_path):
     """
     Test the main `run_evolution_loop` with mocked dependencies.
 
